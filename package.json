@@ -1,22 +1,35 @@
 {
-  "name": "mutants",
-  "version": "1.0.0",
-  "description": "Project that validates if a human is a mutant according to their DNA",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marlube/mutants.git"
-  },
-  "keywords": [
-    "mutants"
-  ],
-  "author": "Lucia Urrea",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/marlube/mutants/issues"
-  },
-  "homepage": "https://github.com/marlube/mutants#readme"
+    "name": "mutants",
+    "version": "1.0.0",
+    "description": "Project that validates if a human is a mutant according to their DNA",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon --exec babel-node src/app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "babel": {
+        "presets": ["@babel/preset-env"]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marlube/mutants.git"
+    },
+    "keywords": [
+        "mutants"
+    ],
+    "author": "Lucia Urrea",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/marlube/mutants/issues"
+    },
+    "homepage": "https://github.com/marlube/mutants#readme",
+    "dependencies": {
+        "@babel/cli": "^7.16.0",
+        "@babel/core": "^7.16.5",
+        "@babel/preset-env": "^7.16.5",
+        "cors": "^2.8.5",
+        "express": "^4.17.2",
+        "nodemon": "^2.0.15",
+        "rimraf": "^3.0.2"
+    }
 }
