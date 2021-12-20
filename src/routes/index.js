@@ -1,10 +1,8 @@
-import { request, Router } from "express";
-import { getAllProducts, getProductById } from "../controllers";
+import { Router } from "express";
+import { isMutant } from "../controllers";
 
 const router = Router();
 
-router.post("/mutant/", (req, res) => {
-    console.log(req.body, ' Este es el dna');
-});
+router.post("/mutant/", isMutant);
 
 export default router;
