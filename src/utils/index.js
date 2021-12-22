@@ -1,54 +1,25 @@
 export const validateMutant = (dna) => {
     if (!dna) return [];
-    const data = validateDiag(dna);
-
+    const DNA = dna.map((field) => Array.from(field));
+    const data = validateEqualValuesOnRow(DNA);
+    rowValidation(DNA);
+    //console.log(DNA, " Este es DNA");
     return data;
 };
 
-const validateDiag = (dna) => {
-    let rows = dna.length;
-    let cols = dna[0].length;
-    let valid1 = "";
-    let valid2 = "";
-    let ismutant = 0;
-    for (let i = 0; i < cols + rows - 1; i++) {
-        let r = i;
-        let c = 0;
-        let segD = cols - 1;
-        let diag1 = '';
-        let diag2 = '';
-        let contador1 = 0;
-        let contador2 = 0;
-        while (r >= 0 && c < cols) {
-            if (r < rows) {
-                diag1 += dna[r][c];
-                diag2 += dna[r][segD];
-                if (valid1 === dna[r][c]) {
-                    contador1 = contador1 + 1;
-                }
-                valid1 = dna[r][c];
-                if (valid2 === dna[r][segD]) {
-                    contador2 = contador2 + 1;
-                }
-                valid2 = dna[r][segD];
-            }
-            r -= 1;
-            c += 1;
-            segD -= 1;
-            if (contador1 == 3) {
-                contador1 = 0;
-                console.log("se repite!!!!!" + "<br>");
-                ismutant = ismutant + 1;
-            }
-            if (contador2 == 3) {
-                contador2 = 0;
-                console.log("se repite!!!!!" + "<br>");
-                ismutant = ismutant + 1;
-            }
-        }
-        //console.log(diag1 + "<br>" + diag2 + "<br>" + "<br>");
-    }
-    if (ismutant >= 2) {
-        return "La cura!! es un MUTANTE por diagonales";
-    }
-};
+//count of coincidence, if the coincidence is more than one return true
+let rowCoincidence = 0;
+
+const validateEqualValuesOnRow = (list) =>
+    list.length >= 4 && list.some((current, index) => {
+        const isValid = index > 1 && current === list[index - 3] && current === list[index - 2] && current === list[index - 1]
+        if (isValid) rowCoincidence += 1;
+        return isValid;
+    })
+
+
+// row Validation
+const rowValidation = (dna) => dna.forEach((row) => {
+    console.log(validateEqualValuesOnRow(row));
+    return validateEqualValuesOnRow(row);
+});
