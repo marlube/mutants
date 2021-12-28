@@ -5,6 +5,10 @@ export const isMutant = async(req, res) => {
         const validateIsMutant = await validateMutant(req.body.dna);
         res.status(200).json(validateIsMutant);
     } catch (error) {
-        res.status(404).send({ error: error.message });
+        if (SyntaxError) {
+            res.status(400).send({ error: error.message });
+        } else {
+            res.status(403).send({ error: error.message });
+        }
     }
 };
