@@ -5,7 +5,7 @@ const cors = require("cors");
 
 // created express app
 const app = express();
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3500
 
 app.use(cors());
 app.options('*', cors());
