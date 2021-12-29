@@ -1,6 +1,6 @@
 // import dependencies and routes
-const express = require("express");
 import indexRoutes from "./routes/index";
+const express = require("express");
 const cors = require("cors");
 
 // created express app

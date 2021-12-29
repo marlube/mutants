@@ -4,7 +4,7 @@ let countMutant = 0;
 
 /**
  * A function that validates dimensions of the Matriz NxN
- * @param {*} matriz the DNA string to validate
+ * @param {array} matriz the DNA string to validate
  * @returns Error 400 Bad Request
  */
 export const validateDimentionMatriz = (matriz) => matriz.map((_, index) => {
@@ -15,7 +15,7 @@ export const validateDimentionMatriz = (matriz) => matriz.map((_, index) => {
 
 /**
  * A function that validates if have allowed characters (A, T, C, G)
- * @param {*} row the DNA string to validate
+ * @param {array} row the DNA string to validate
  * @returns Error 400 Bad Request
  */
 export const validateDnaInRow = (row) => row.every((current) => {
@@ -26,7 +26,7 @@ export const validateDnaInRow = (row) => row.every((current) => {
 
 /**
  * Function counts times validation 
- * @param {*} validation Boolean if is mutant or not
+ * @param {Boolean} validation Boolean if is mutant or not
  * @returns Object that contains the number of humans, mutants and their ratio
  */
 export const countDnaValidate = (validation) => {

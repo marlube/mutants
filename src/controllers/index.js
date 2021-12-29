@@ -1,5 +1,10 @@
 import { validateMutant } from "../utils";
 
+/**
+ * Function that validate errors 
+ * @param {http_request}  req  Request sent it by the user
+ * @param {http_response} res  Response from mutant service 
+ */
 export const isMutant = async(req, res) => {
     try {
         const validateIsMutant = await validateMutant(req.body.dna);

@@ -14,7 +14,7 @@ let rowCoincidence = 0;
 
 /**
  * Function that validate if exist equal values on row 
- * @param {*} list the DNA string to validate
+ * @param {array} list the DNA string to validate
  * @returns true or false 
  */
 const validateEqualValuesOnRow = (list) =>
@@ -26,7 +26,7 @@ const validateEqualValuesOnRow = (list) =>
 
 /**
  * Function that validate row 
- * @param {*} matriz the DNA string to validate
+ * @param {array} matriz the DNA string to validate
  * @returns Validated rows 
  */
 const rowValidation = (matriz) => matriz.forEach((row) => {
@@ -36,7 +36,7 @@ const rowValidation = (matriz) => matriz.forEach((row) => {
 
 /**
  * Function that transpose columns to rows 
- * @param {*} matriz the DNA string to validate
+ * @param {array} matriz the DNA string to validate
  * @returns the matriz transpose 
  */
 const transposeColumnsToRows = (matriz) => {
@@ -46,7 +46,7 @@ const transposeColumnsToRows = (matriz) => {
 
 /**
  * Function that validate if the columns have a string mutant
- * @param {*} matriz the DNA string to validate
+ * @param {array} matriz the DNA string to validate
  */
 const columnValidation = (matriz) => {
     let columns = transposeColumnsToRows(matriz);
@@ -55,7 +55,7 @@ const columnValidation = (matriz) => {
 
 /**
  * Function that transpose diagonals to rows for validate digonals like rows
- * @param {*} matrix The DNA matriz to validate
+ * @param {array} matrix The DNA matriz to validate
  * @returns The diagonals like a rows 
  */
 const trasposeDiagonalToList = (matrix) => {
@@ -73,7 +73,7 @@ const trasposeDiagonalToList = (matrix) => {
 
 /** 
  * Funcion that validate diagonal  
- * @param {*} matriz The DNA matriz to validate
+ * @param {array} matriz The DNA matriz to validate
  */
 const diagonalValidate = (matriz) => {
     const diagonals = trasposeDiagonalToList(matriz);
@@ -82,7 +82,7 @@ const diagonalValidate = (matriz) => {
 
 /**
  * Function that calls all validations
- * @param {*} dna The DNA string to validate
+ * @param {array} dna The DNA string to validate
  * @returns Object that contains if a DNA is mutant or not and coincidences of the mutant strings
  */
 const validateStringMutantDNA = (dna) => {
