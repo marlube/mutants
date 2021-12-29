@@ -3,12 +3,10 @@ import { validateMutant } from "../utils";
 export const isMutant = async(req, res) => {
     try {
         const validateIsMutant = await validateMutant(req.body.dna);
-        res.status(200).json(validateIsMutant);
+        const { isMutant } = validateIsMutant;
+        const isNotMutantMessage = 'El DNA enviado pertenece a un humano';
+        isMutant ? res.status(200).json(validateIsMutant) : res.status(403).send({ error: isNotMutantMessage });
     } catch (error) {
-        if (SyntaxError) {
-            res.status(400).send({ error: error.message });
-        } else {
-            res.status(403).send({ error: error.message });
-        }
+        res.status(400).send({ error: error.message });
     }
 };
