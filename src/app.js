@@ -2,10 +2,10 @@
 import indexRoutes from "./routes/index";
 const express = require("express");
 const cors = require("cors");
+const { PORT } = require("../config");
 
 // created express app
 const app = express();
-const PORT = process.env.PORT || 3500
 
 app.use(cors());
 app.options('*', cors());
