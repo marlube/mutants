@@ -13,6 +13,29 @@ export const validateMutant = (dna) => {
 let rowCoincidence = 0;
 
 /**
+ * count time that validate, if the is human or is mutant
+ */
+let counthuman = 0;
+let countmutant = 0;
+
+/**
+ * Function count times validation 
+ * @param {*} validation Boolean if is mutant or not
+ * @returns 
+ */
+const countDnaValidate = (validation) => {
+    if (validation == "true") {
+        countmutant += 1;
+    } else {
+        counthuman += 1;
+    }
+    console.log(validation, " validacion");
+    console.log(counthuman, " contador de humanos verificados");
+    console.log(countmutant, " contador de mutantes verificados");
+    return { count_mutant_dna: countmutant, count_human_dna: counthuman, ratio: countmutant / counthuman };
+}
+
+/**
  * Function that validate if exist equal values on row 
  * @param {*} list the DNA string to validate
  * @returns true or false 
@@ -112,5 +135,6 @@ const validateStringMutantDNA = (dna) => {
     rowValidation(dna);
     columnValidation(dna);
     diagonalValidate(dna)
-    return { isMutant: rowCoincidence >= 2, rowCoincidence };
+    countDnaValidate(rowCoincidence >= 2);
+    return { isMutant: rowCoincidence >= 2 };
 };

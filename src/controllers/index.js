@@ -12,3 +12,15 @@ export const isMutant = async(req, res) => {
         }
     }
 };
+
+export const validate = async(req, res) => {
+    try {
+        const dnaValidate = await countDnaValidate(req);
+        console.log(dnaValidate);
+        res.status(200).json(dnaValidate);
+
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+
+    }
+};
