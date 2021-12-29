@@ -1,3 +1,5 @@
+import { validateDimentionMatriz, validateDnaInRow, countDnaValidate } from '../validators';
+
 export const validateMutant = (dna) => {
     if (!dna) return [];
     rowCoincidence > 0 ? rowCoincidence = 0 : null;
@@ -7,9 +9,7 @@ export const validateMutant = (dna) => {
     return isMutant;
 };
 
-/**
- * count of coincidence, if the coincidence is more than one return true
- */
+// Count of coincidence, if the coincidence is more than one return true
 let rowCoincidence = 0;
 
 /**
@@ -25,35 +25,12 @@ const validateEqualValuesOnRow = (list) =>
     });
 
 /**
- * Function that validate if have caracters diferents 
- * @param {*} list the DNA string to validate
- * @returns Error 400 bat request
- */
-const validateDnaInMatriz = (list) =>
-    list.forEach((current) => {
-        if (current !== "A" && current !== "T" && current !== "C" && current !== "G") {
-            throw (new SyntaxError('Hay un caracter diferente a la cadena de DNA ingrese un valor valido'));
-        }
-    });
-
-/**
- * Function that validate dimention of the matriz NxN
- * @param {*} matriz the DNA string to validate
- * @returns Error 400 bat request
- */
-const validateDimentionMatriz = (matriz) => matriz.map((_, index) => {
-    if (matriz.length !== matriz[index].length) {
-        throw (new SyntaxError('La cadena de DNA no tiene todos los valores'));
-    }
-});
-
-/**
  * Function that validate row 
  * @param {*} matriz the DNA string to validate
  * @returns Validated rows 
  */
 const rowValidation = (matriz) => matriz.forEach((row) => {
-    validateDnaInMatriz(row);
+    validateDnaInRow(row);
     return validateEqualValuesOnRow(row);
 });
 
@@ -104,7 +81,7 @@ const diagonalValidate = (matriz) => {
 };
 
 /**
- * Function that call the all validations
+ * Function that calls all validations
  * @param {*} dna The DNA string to validate
  * @returns Object that contains if a DNA is mutant or not and coincidences of the mutant strings
  */
@@ -112,5 +89,6 @@ const validateStringMutantDNA = (dna) => {
     rowValidation(dna);
     columnValidation(dna);
     diagonalValidate(dna)
-    return { isMutant: rowCoincidence >= 2, rowCoincidence };
+    countDnaValidate(rowCoincidence >= 2);
+    return { isMutant: rowCoincidence >= 2 };
 };
