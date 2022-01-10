@@ -1,4 +1,5 @@
 import { validateMutant } from "../utils";
+import { db } from "../db";
 
 /**
  * Function that validate errors 
@@ -10,6 +11,7 @@ export const isMutant = async(req, res) => {
         const validateIsMutant = await validateMutant(req.body.dna);
         const { isMutant } = validateIsMutant;
         const isNotMutantMessage = 'El DNA enviado pertenece a un humano';
+        db.ref('dnaValidate').push(req.body.dna);
         isMutant ? res.status(200).json(validateIsMutant) : res.status(403).send({ error: isNotMutantMessage });
     } catch (error) {
         res.status(400).send({ error: error.message });
