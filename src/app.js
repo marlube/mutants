@@ -17,3 +17,5 @@ app.use(indexRoutes);
 app.listen(PORT, () => {
     console.log(`Escuchando en puerto ${PORT}`);
 });
+
+export default app;
