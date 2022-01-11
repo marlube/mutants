@@ -1,11 +1,10 @@
 import { Router } from "express";
-import { isMutant } from "../controllers";
-import { countDnaValidate } from "../validators";
+import { isMutant, getStats } from "../controllers";
 
 const router = Router();
 
 // Mutants and stats services
 router.post("/mutant/", isMutant);
-router.get("/stats", countDnaValidate);
+router.get("/stats", getStats);
 
 export default router;
