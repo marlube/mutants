@@ -1,7 +1,3 @@
-// Human and Mutant counters
-let countHuman = 0;
-let countMutant = 0;
-
 /**
  * A function that validates dimensions of the Matriz NxN
  * @param {array} matriz the DNA string to validate
@@ -25,11 +21,11 @@ export const validateDnaInRow = (row) => row.every((current) => {
 });
 
 /**
- * Function counts times validation 
- * @param {Boolean} validation Boolean if is mutant or not
+ * Function counts times validation
+ * @param {Number} countHuman Number of humans
+ * @param {Number} countMutant Number of mutants
  * @returns Object that contains the number of humans, mutants and their ratio
  */
-export const countDnaValidate = (validation) => {
-    validation ? countMutant += 1 : countHuman += 1;
-    return { count_mutant_dna: countMutant, count_human_dna: countHuman, ratio: countMutant / countHuman === 0 ? 1 : countHuman };
+export const countDnaValidate = (countHuman, countMutant) => {
+    return { count_mutant_dna: countMutant, count_human_dna: countHuman, ratio: countMutant / (countHuman === 0 ? 1 : countHuman) };
 }
